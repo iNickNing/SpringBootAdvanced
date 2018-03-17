@@ -1,0 +1,5 @@
+server:
+  port: 8085
+
+testYmlValue: testReadYmlProperties
+testYmlValueAdd: "read Yml Value=:${testYmlValue}"

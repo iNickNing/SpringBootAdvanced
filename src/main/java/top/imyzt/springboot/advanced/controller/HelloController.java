@@ -12,13 +12,19 @@ public class HelloController {
     @Value("${testYmlValue}")
     private String ymlValue;
 
+    @Value("${testYmlValueAdd}")
+    private String testYmlValueAdd;
+
     @GetMapping(value = "hello/{word}")
     public String hello(@PathVariable(value = "word") String word){
         return word;
     }
 
-    @PostMapping(value = "readYmlValue")
-    public String readYmlValue(){
-        return ymlValue;
+    @PostMapping(value = "readYmlValue/{num}")
+    public String readYmlValue(@PathVariable(value = "num") Integer num){
+        if (num == 1){
+            return ymlValue;
+        }
+        return testYmlValueAdd;
     }
 }
