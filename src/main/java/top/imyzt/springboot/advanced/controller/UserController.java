@@ -3,11 +3,13 @@ package top.imyzt.springboot.advanced.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import top.imyzt.springboot.advanced.pojo.User;
 import top.imyzt.springboot.advanced.respository.UserRespository;
 import top.imyzt.springboot.advanced.service.UserService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,9 +29,13 @@ public class UserController {
         return userRespository.findAll();
     }
 
-    @ApiOperation(value = "添加一个用户")
+    @ApiOperation(value = "添加一个用户,")
     @PostMapping(value = "/user")
-    public User addUser(@RequestBody User user){
+    public Object addUser(@RequestBody @Valid User user, BindingResult bindingResult){
+        //通过BindingResult和@Valid对应的实体类属性中注解的条件生成验证规则
+        if (bindingResult.hasErrors()){
+            return bindingResult.getFieldError().getDefaultMessage();
+        }
         return userRespository.save(user);
     }
 

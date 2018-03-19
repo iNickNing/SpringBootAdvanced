@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.io.Serializable;
 
 /**
@@ -18,9 +20,16 @@ public class User implements Serializable{
     @Id
     @GeneratedValue
     private Integer id;
+
     private String name;
+
+    //数据验证
+    @Min(value = 18, message = "未满18周岁禁止入内")
+    @Max(value = 100, message = "超过100周岁禁止入内")
     private int age;
+
     private String email;
+
     private String address;
 
     public User() {
