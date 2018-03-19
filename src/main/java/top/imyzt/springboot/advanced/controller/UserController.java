@@ -5,9 +5,11 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import top.imyzt.springboot.advanced.pojo.Result;
 import top.imyzt.springboot.advanced.pojo.User;
 import top.imyzt.springboot.advanced.respository.UserRespository;
 import top.imyzt.springboot.advanced.service.UserService;
+import top.imyzt.springboot.advanced.utils.ResultUtil;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -31,12 +33,12 @@ public class UserController {
 
     @ApiOperation(value = "添加一个用户,")
     @PostMapping(value = "/user")
-    public Object addUser(@RequestBody @Valid User user, BindingResult bindingResult){
+    public Result addUser(@RequestBody @Valid User user, BindingResult bindingResult){
         //通过BindingResult和@Valid对应的实体类属性中注解的条件生成验证规则
         if (bindingResult.hasErrors()){
-            return bindingResult.getFieldError().getDefaultMessage();
+            return ResultUtil.error(400,bindingResult.getFieldError().getDefaultMessage());
         }
-        return userRespository.save(user);
+        return ResultUtil.ok(userRespository.save(user));
     }
 
     @ApiOperation(value = "根据id删除一个用户")
@@ -67,5 +69,11 @@ public class UserController {
     @PostMapping(value = "/user/addTwoUser")
     public void addTwoUser(){
         userService.addTwoUser();
+    }
+
+    @ApiOperation(value = "根据id获取用户年龄")
+    @PostMapping(value = "/user/getAge/{id}")
+    public void getAge(@PathVariable(value = "id") Integer id) throws Exception {
+        userService.getAge(id);
     }
 }

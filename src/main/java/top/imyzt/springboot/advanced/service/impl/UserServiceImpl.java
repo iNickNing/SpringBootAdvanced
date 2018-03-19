@@ -7,6 +7,7 @@ import top.imyzt.springboot.advanced.respository.UserRespository;
 import top.imyzt.springboot.advanced.service.UserService;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 /**
  * 用户操作服务类
@@ -40,5 +41,18 @@ public class UserServiceImpl implements UserService{
         u2.setEmail("12132321@gamil.com");
 
         userRespository.save(u2);
+    }
+
+    @Override
+    public void getAge(Integer id) throws Exception {
+        User user = userRespository.getOne(id);
+
+        Integer age = user.getAge();
+        if (age < 10){
+            throw new Exception("小于10岁");
+        }else if (age >= 10 && age <18){
+            throw new Exception("10 <= age < 18");
+        }
+        throw new Exception("没问题");
     }
 }
