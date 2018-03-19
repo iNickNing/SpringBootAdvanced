@@ -2,11 +2,12 @@ package top.imyzt.springboot.advanced.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.imyzt.springboot.advanced.pojo.User;
 import top.imyzt.springboot.advanced.respository.UserRespository;
+import top.imyzt.springboot.advanced.service.UserService;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
@@ -14,8 +15,11 @@ import java.util.List;
 @RequestMapping(value = "user")
 public class UserController {
 
-    @Resource
+    @Autowired
     private UserRespository userRespository;
+
+    @Autowired
+    private UserService userService;
 
     @ApiOperation(value = "获取所有用户")
     @GetMapping(value = "/user")
@@ -51,5 +55,11 @@ public class UserController {
     @GetMapping(value = "/user/age/{age}")
     public List<User> getUserByAge(@PathVariable(value = "age") Integer age){
         return userRespository.findByAge(age);
+    }
+
+    @ApiOperation(value = "插入两条数据,使用事务管理")
+    @PostMapping(value = "/user/addTwoUser")
+    public void addTwoUser(){
+        userService.addTwoUser();
     }
 }
