@@ -1,18 +1,19 @@
 package top.imyzt.springboot.advanced.pojo;
 
 
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * 实体文件
  */
 @Entity
-@ApiModel
-public class User {
+@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler","fieldHandler"})
+public class User implements Serializable{
 
     @Id
     @GeneratedValue
