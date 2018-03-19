@@ -16,4 +16,11 @@ public interface UserRespository extends JpaRepository<User, Integer>{
      * @return
      */
     List<User> findByAge(Integer age);
+
+    /**
+     * 通过姓名查询
+     * @param name 姓名
+     * @return
+     */
+    List<User> findByName(String name);
 }
