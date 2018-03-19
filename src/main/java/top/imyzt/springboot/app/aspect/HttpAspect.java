@@ -1,6 +1,5 @@
-package top.imyzt.springboot.advanced.aspect;
+package top.imyzt.springboot.app.aspect;
 
-import org.aopalliance.intercept.Joinpoint;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
@@ -10,7 +9,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
 
 /**
  * AOP处理网络请求
@@ -24,10 +22,10 @@ public class HttpAspect {
     private final static Logger log = LoggerFactory.getLogger(HttpAspect.class);
 
     /**
-     * ..表示@top.imyzt.springboot.advanced.controller.UserController.list()方法的任何参数都会处理
+     * ..表示@top.imyzt.springboot.app.controller.UserController.list()方法的任何参数都会处理
      * @Pointcut表示定义一个规则
      */
-    @Pointcut("execution(public * top.imyzt.springboot.advanced.controller.UserController.*(..))")
+    @Pointcut("execution(public * top.imyzt.springboot.app.controller.UserController.*(..))")
     public void log(){}
 
     /**

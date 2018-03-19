@@ -1,13 +1,14 @@
-package top.imyzt.springboot.advanced.service.impl;
+package top.imyzt.springboot.app.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import top.imyzt.springboot.advanced.pojo.User;
-import top.imyzt.springboot.advanced.respository.UserRespository;
-import top.imyzt.springboot.advanced.service.UserService;
+import top.imyzt.springboot.app.enums.ResultEnum;
+import top.imyzt.springboot.app.exception.AppException;
+import top.imyzt.springboot.app.pojo.User;
+import top.imyzt.springboot.app.respository.UserRespository;
+import top.imyzt.springboot.app.service.UserService;
 
 import javax.transaction.Transactional;
-import java.util.Optional;
 
 /**
  * 用户操作服务类
@@ -44,15 +45,16 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void getAge(Integer id) throws Exception {
+    public Integer getAge(Integer id) throws Exception {
         User user = userRespository.getOne(id);
 
         Integer age = user.getAge();
         if (age < 10){
-            throw new Exception("小于10岁");
+            throw new AppException(ResultEnum.MIDDLE_SCHOOL);
         }else if (age >= 10 && age <18){
-            throw new Exception("10 <= age < 18");
+            throw new AppException(ResultEnum.PRIMARY_SCHOOL);
         }
-        throw new Exception("没问题");
+
+        return user.getAge();
     }
 }

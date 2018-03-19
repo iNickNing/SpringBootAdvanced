@@ -1,15 +1,15 @@
-package top.imyzt.springboot.advanced.controller;
+package top.imyzt.springboot.app.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import top.imyzt.springboot.advanced.pojo.Result;
-import top.imyzt.springboot.advanced.pojo.User;
-import top.imyzt.springboot.advanced.respository.UserRespository;
-import top.imyzt.springboot.advanced.service.UserService;
-import top.imyzt.springboot.advanced.utils.ResultUtil;
+import top.imyzt.springboot.app.pojo.Result;
+import top.imyzt.springboot.app.pojo.User;
+import top.imyzt.springboot.app.respository.UserRespository;
+import top.imyzt.springboot.app.service.UserService;
+import top.imyzt.springboot.app.utils.ResultUtil;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -73,7 +73,7 @@ public class UserController {
 
     @ApiOperation(value = "根据id获取用户年龄")
     @PostMapping(value = "/user/getAge/{id}")
-    public void getAge(@PathVariable(value = "id") Integer id) throws Exception {
-        userService.getAge(id);
+    public Integer getAge(@PathVariable(value = "id") Integer id) throws Exception {
+        return userService.getAge(id);
     }
 }

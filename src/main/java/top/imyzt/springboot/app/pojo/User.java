@@ -1,4 +1,4 @@
-package top.imyzt.springboot.advanced.pojo;
+package top.imyzt.springboot.app.pojo;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

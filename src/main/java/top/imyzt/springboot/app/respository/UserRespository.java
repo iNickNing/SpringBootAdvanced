@@ -1,7 +1,7 @@
-package top.imyzt.springboot.advanced.respository;
+package top.imyzt.springboot.app.respository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import top.imyzt.springboot.advanced.pojo.User;
+import top.imyzt.springboot.app.pojo.User;
 
 import java.util.List;
 

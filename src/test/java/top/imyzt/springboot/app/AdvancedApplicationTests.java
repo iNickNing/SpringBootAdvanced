@@ -1,4 +1,4 @@
-package top.imyzt.springboot.advanced;
+package top.imyzt.springboot.app;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package top.imyzt.springboot.advanced.service;
+package top.imyzt.springboot.app.service;
 
 public interface UserService {
 
@@ -11,5 +11,5 @@ public interface UserService {
      * 获取用户年龄
      * @param id
      */
-    void getAge(Integer id) throws Exception;
+    Integer getAge(Integer id) throws Exception;
 }

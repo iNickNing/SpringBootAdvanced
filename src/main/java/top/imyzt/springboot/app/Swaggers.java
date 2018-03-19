@@ -1,4 +1,4 @@
-package top.imyzt.springboot.advanced;
+package top.imyzt.springboot.app;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

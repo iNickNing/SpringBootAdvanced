@@ -1,7 +1,7 @@
-package top.imyzt.springboot.advanced.pojo;
+package top.imyzt.springboot.app.pojo;
 
 /**
- * 统一的Http返回消息
+ * 统一的Http返回消息对象
  */
 public class Result<T> {
 

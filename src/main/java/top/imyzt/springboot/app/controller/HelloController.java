@@ -1,4 +1,4 @@
-package top.imyzt.springboot.advanced.controller;
+package top.imyzt.springboot.app.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

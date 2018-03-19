@@ -1,6 +1,6 @@
-package top.imyzt.springboot.advanced.utils;
+package top.imyzt.springboot.app.utils;
 
-import top.imyzt.springboot.advanced.pojo.Result;
+import top.imyzt.springboot.app.pojo.Result;
 
 /**
  * Http请求返回消息
